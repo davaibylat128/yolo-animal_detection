@@ -2,7 +2,7 @@ import argparse
 import io
 from PIL import Image
 import datetime
-
+from waitress import serve
 import torch
 import cv2
 import numpy as np
@@ -154,5 +154,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     model = YOLO('best.pt')
     app.run(host="0.0.0.0", port=args.port)
+    serve(app, host="0.0.0.0", port=args.port)
 
 
