@@ -10,3 +10,4 @@ requests
 argparse
 pygame
 pandas
+gunicorn
