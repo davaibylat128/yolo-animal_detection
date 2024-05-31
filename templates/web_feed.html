@@ -36,13 +36,23 @@
     <title>Video Feed</title>
 </head>
 <body>
-    <img src="{{ url_for('web_feed') }}">
+    <div class="content-wrapper" style="padding: 20px;">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="webcam-section" style="margin-bottom: 30px;">
+                    <div class="webcam-header" style="font-size: 2em; font-weight: bold; margin-bottom: 20px;">Animal Detection</div>
+                    <div class="webcam-content">
+                        <img src="{{ url_for('web_feed') }}" style="width: 100%; max-width: 640px; height: auto;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
 {% endblock content %}
 
 {% block javascripts %}
-
   <!-- jQuery -->
   <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -77,5 +87,4 @@
   <script src="/static/assets/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="/static/assets/js/demo.js"></script>
-
 {% endblock javascripts %}

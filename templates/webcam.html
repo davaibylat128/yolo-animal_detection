@@ -2,7 +2,6 @@
 
 {% block title %} Webcam Animal Detection {% endblock %}
 
-
 {% block stylesheets %}
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -27,32 +26,38 @@
 {% endblock stylesheets %}
 
 {% block content %}
+<div class="content-wrapper" style="padding: 20px;">
+  <section class="content">
+    <div class="container-fluid">
+      <div class="webcam-section" style="margin-bottom: 30px;">
+        <div class="webcam-header" style="font-size: 2em; font-weight: bold; margin-bottom: 20px;">Animal Detection</div>
+        <div class="webcam-content" style="font-size: 1.2em; line-height: 1.6;">
+          <img src="{{ url_for('web_feed') }}" width="640" height="480">
+          <br>
+          <button onclick="stopAlarm()">Stop Alarm</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
-<body>
-    <h1>Animal Detection</h1>
-    <img src="{{ url_for('web_feed') }}" width="640" height="480">
-    <br>
-    <button onclick="stopAlarm()">Stop Alarm</button>
-    <script>
-        function stopAlarm() {
-            fetch('/stop_alarm', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }).then(response => {
-                if (response.ok) {
-                    alert('Alarm stopped successfully');
-                }
-            });
-        }
-    </script>
-</body>
-
+<script>
+  function stopAlarm() {
+    fetch('/stop_alarm', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(response => {
+      if (response.ok) {
+        alert('Alarm stopped successfully');
+      }
+    });
+  }
+</script>
 {% endblock content %}
 
 {% block javascripts %}
-
   <!-- jQuery -->
   <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -87,5 +92,4 @@
   <script src="/static/assets/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="/static/assets/js/demo.js"></script>
-
 {% endblock javascripts %}
