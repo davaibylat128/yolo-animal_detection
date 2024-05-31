@@ -6,7 +6,6 @@ from waitress import serve
 import torch
 import cv2
 import numpy as np
-import tensorflow as tf
 from re import DEBUG, sub
 from flask import Flask, render_template, request, redirect, send_file, url_for, Response
 from werkzeug.utils import secure_filename, send_from_directory
